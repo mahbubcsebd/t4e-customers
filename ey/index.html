@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>How EY builds coherent applications faster with Think4Ever | Customer story</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="EY Caribbean&#x27;s Technology Consulting practice uses Think4Ever to build internal applications and deliver client software, with business intent carried from first conversation to released code.">
+<link rel="canonical" href="https://think4ever.com/customers/ey/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How EY builds coherent applications faster with Think4Ever | Customer story">
+<meta property="og:description" content="EY Caribbean&#x27;s Technology Consulting practice uses Think4Ever to build internal applications and deliver client software, with business intent carried from first conversation to released code.">
+<meta property="og:url" content="https://think4ever.com/customers/ey/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: navy masthead band, then a reading column beside a sticky fact sheet. Brand palette from the T4E brand manual, matching the design artifacts guide. */
+:root{
+  --navy:#0B1B3A; --blue:#1D63E0; --orange:#FF7A1A; --sky:#B7CCF4;
+  --bg:#FBFCFE; --surface:#FFFFFF; --surface-2:#F4F6FA;
+  --fg:#0B1B3A; --fg-2:#3A4A6A; --fg-3:#64728F;
+  --line:#DCE3EF; --line-2:#C6D1E4;
+  --accent:#1D63E0; --accent-soft:#E7EEFC; --hot:#C84E05; --hot-soft:#FFF1E6;
+  --band:#0B1B3A; --band-fg:#F4F6FA; --band-dim:#B7CCF4;
+  --tbd-bg:#FFF2A8; --tbd-fg:#3D3300; --cta:#1D63E0; --header:rgba(255,255,255,.92);
+  --shadow:0 1px 2px rgba(11,27,58,.06),0 6px 20px rgba(11,27,58,.06);
+  --f-body:"DM Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --s-1:.8125rem; --s0:1rem; --s1:1.125rem; --s2:1.375rem; --s3:1.75rem; --s4:2.25rem; --s5:clamp(2rem,4.6vw,3.25rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08142B; --surface:#0E1D3B; --surface-2:#12244A;
+  --fg:#EEF2FA; --fg-2:#C3CEE4; --fg-3:#93A3C4;
+  --line:#22365E; --line-2:#2E4573;
+  --accent:#7FA8F5; --accent-soft:#16305F; --hot:#FF9A4D; --hot-soft:#3A2414;
+  --band:#050D1E; --band-fg:#EEF2FA; --band-dim:#9FB6E6;
+  --tbd-bg:#5A4B00; --tbd-fg:#FFF4B8; --header:rgba(8,20,43,.92);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08142B; --surface:#0E1D3B; --surface-2:#12244A;
+  --fg:#EEF2FA; --fg-2:#C3CEE4; --fg-3:#93A3C4;
+  --line:#22365E; --line-2:#2E4573;
+  --accent:#7FA8F5; --accent-soft:#16305F; --hot:#FF9A4D; --hot-soft:#3A2414;
+  --band:#050D1E; --band-fg:#EEF2FA; --band-dim:#9FB6E6;
+  --tbd-bg:#5A4B00; --tbd-fg:#FFF4B8; --header:rgba(8,20,43,.92);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:var(--s0);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.15;color:var(--fg)}
+h2{font-size:var(--s3);font-weight:800;letter-spacing:-.02em}
+h3{font-size:var(--s1);font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--orange);outline-offset:2px;border-radius:4px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+mark.tbd{background:var(--tbd-bg);color:var(--tbd-fg);padding:0 .2em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.preview-note{background:var(--tbd-bg);color:var(--tbd-fg);font-size:var(--s-1)}
+.preview-note .wrap{padding-block:8px}
+
+/* masthead */
+.mast{background:var(--band);color:var(--band-fg)}
+.mast .wrap{padding-block:48px 44px;display:grid;gap:18px}
+.mast .eyebrow{color:var(--band-dim)}
+.mast .eyebrow a{color:var(--band-dim);text-decoration:none}
+.mast .eyebrow a:hover{color:var(--band-fg)}
+.mast h1{color:var(--band-fg);font-size:var(--s5);font-weight:800;letter-spacing:-.03em;max-width:22ch}
+.mast h1 em{font-style:normal;color:var(--orange)}
+.mast .lede{color:var(--band-dim);font-size:var(--s1);max-width:62ch}
+
+/* metric strip */
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(183,204,244,.25);margin-top:10px}
+.metric{padding:18px 18px 4px 0;display:grid;gap:4px;min-width:0}
+.metric + .metric{padding-left:18px;border-left:1px solid rgba(183,204,244,.25)}
+.metric b{font-size:var(--s4);font-weight:800;letter-spacing:-.02em;color:var(--orange);line-height:1.1;font-variant-numeric:tabular-nums}
+.metric span{color:var(--band-dim);font-size:var(--s-1)}
+@media (max-width:640px){.metrics{grid-template-columns:1fr}.metric + .metric{padding-left:0;border-left:0;border-top:1px solid rgba(183,204,244,.25)}}
+
+/* story body */
+.story{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;padding-block:48px 24px;align-items:start}
+.story main{display:grid;gap:48px;min-width:0}
+.story section{display:grid;gap:16px;max-width:68ch}
+.story section.wide{max-width:none}
+.story section p{color:var(--fg-2)}
+aside.facts{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:grid;gap:16px;box-shadow:var(--shadow)}
+aside.facts dl{margin:0;display:grid;gap:14px}
+aside.facts dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+aside.facts dd{margin:2px 0 0;font-size:.95rem;color:var(--fg)}
+aside.facts .btn{justify-self:start}
+@media (max-width:900px){.story{grid-template-columns:1fr;gap:36px}aside.facts{position:static;order:-1}}
+
+ul.points{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+ul.points li{padding-left:22px;position:relative;color:var(--fg-2)}
+ul.points li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--orange)}
+ul.points b{color:var(--fg);font-weight:700}
+
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.trio div{background:var(--surface-2);border-radius:10px;padding:18px;display:grid;gap:6px;align-content:start;min-width:0}
+.trio p{font-size:.95rem}
+@media (max-width:760px){.trio{grid-template-columns:1fr}}
+
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);font-weight:500;background:var(--surface-2)}
+td:first-child{font-weight:700;white-space:nowrap}
+td{color:var(--fg-2)}
+td:first-child,td.result{color:var(--fg)}
+
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--accent)}
+.timeline div{padding:14px 14px 0 0;display:grid;gap:4px;align-content:start;min-width:0;position:relative}
+.timeline div::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.timeline .when{font-family:var(--f-mono);font-size:.75rem;color:var(--accent)}
+.timeline p{font-size:.92rem}
+@media (max-width:760px){.timeline{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--accent);gap:18px}.timeline div{padding:0 0 0 18px}.timeline div::before{top:4px;left:-7px}}
+
+figure.quote{margin:0;display:grid;gap:12px;padding-block:8px}
+figure.quote blockquote{margin:0;font-size:var(--s2);line-height:1.4;font-weight:500;color:var(--fg);letter-spacing:-.01em;position:relative;padding-left:44px}
+figure.quote blockquote::before{content:"\201C";position:absolute;left:0;top:-.18em;font-size:3.4rem;line-height:1;color:var(--orange);font-weight:800}
+figure.quote.long blockquote{font-size:var(--s1)}
+figure.quote figcaption{padding-left:44px;color:var(--fg-3);font-size:var(--s-1)}
+figure.quote figcaption b{color:var(--fg);font-weight:700}
+
+.about{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:32px}
+.about div{display:grid;gap:8px;min-width:0}
+.about p{color:var(--fg-2);font-size:.95rem}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem}
+.btn.primary{background:var(--cta);color:#FFFFFF}
+.btn.sm{padding:8px 14px;font-size:.88rem}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{border:1px solid var(--line-2);color:var(--fg)}
+.btn.ghost.on-band{border-color:rgba(183,204,244,.45);color:var(--band-fg)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+
+.band{background:var(--band);color:var(--band-fg)}
+.band .wrap{padding-block:44px;display:grid;gap:16px}
+.band h2{color:var(--band-fg)}
+.band p{color:var(--band-dim);max-width:62ch}
+
+.related{padding-block:48px;display:grid;gap:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+a.card{display:grid;gap:10px;align-content:start;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+a.card .who{font-size:var(--s2);font-weight:800;letter-spacing:-.01em}
+a.card p{color:var(--fg-2);font-size:.95rem}
+a.card .go{color:var(--accent);font-weight:700;font-size:.9rem}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hot);background:var(--hot-soft);padding:3px 8px;border-radius:4px;justify-self:start}
+
+/* index */
+.featured{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:48px;border-bottom:1px solid var(--line)}
+.featured .lead{display:grid;gap:14px}
+.featured h2{font-size:var(--s4)}
+.featured p{color:var(--fg-2)}
+@media (max-width:860px){.featured{grid-template-columns:1fr;gap:24px}}
+.fit{padding-block:48px;display:grid;gap:22px}
+.fit .situation{font-size:var(--s1);font-weight:700;color:var(--fg);line-height:1.3}
+.quotes{background:var(--surface-2)}
+.quotes .wrap{padding-block:48px;display:grid;gap:28px}
+.quotes .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.quotes figure.quote blockquote{font-size:var(--s1)}
+@media (max-width:860px){.quotes .grid{grid-template-columns:1fr}}
+footer.end{padding-block:28px;color:var(--fg-3);font-size:var(--s-1)}
+/* site header and footer (standalone pages only; drop them when the page sits inside the site template) */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--header);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;gap:28px;min-height:64px}
+.site-header nav{display:flex;gap:22px;flex:1;flex-wrap:wrap}
+.site-header nav a,.signin{color:var(--fg-2);text-decoration:none;font-size:.94rem;font-weight:500}
+.site-header nav a:hover,.signin:hover{color:var(--fg)}
+.site-header .actions{display:flex;align-items:center;gap:16px}
+@media (max-width:860px){.site-header nav{display:none}.site-header .wrap{justify-content:space-between}}
+@media (max-width:420px){.signin{display:none}}
+a.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);flex:none}
+a.logo .sym{width:34px;height:auto;display:block}
+a.logo .word{font-size:1.45rem;font-weight:400;letter-spacing:-.035em;line-height:1}
+a.logo .word b{font-weight:900;color:var(--orange)}
+.sym-rev{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sym-pos{display:none}:root:not([data-theme="light"]) .sym-rev{display:block}}
+:root[data-theme="dark"] .sym-pos{display:none}:root[data-theme="dark"] .sym-rev{display:block}
+a.logo.on-band{color:var(--band-fg)}
+a.logo.on-band .sym-pos{display:none} a.logo.on-band .sym-rev{display:block}
+.site-footer{background:var(--band);color:var(--band-dim);font-size:.92rem;border-top:1px solid rgba(183,204,244,.12)}
+.site-footer .wrap{padding-block:44px 28px;display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:28px}
+.site-footer .wrap > div{display:grid;gap:8px;align-content:start}
+.site-footer .eyebrow{color:var(--band-dim);opacity:.8}
+.site-footer a:not(.logo){color:var(--band-fg);text-decoration:none;opacity:.85}
+.site-footer a:not(.logo):hover{opacity:1}
+.site-footer .legal{display:block;padding-block:18px 28px;border-top:1px solid rgba(183,204,244,.15);font-size:.82rem}
+@media (max-width:760px){.site-footer .wrap{grid-template-columns:1fr 1fr}.site-footer .brand{grid-column:1/-1}}
+
+/* ---- Match the live think4ever.com look (homepage screenshot, 30 Oct 2026): royal-blue header,
+   off-white page, navy headlines with orange emphasis, pill buttons, dot chips, light-blue framed panels. ---- */
+:root{--royal:#093CAD; --cta:#093CAD; --bg:#FAFAFA; --frame:#CCE6FF; --frame-in:#FFFFFF; --chip:#F4F6FA; --head-bg:#093CAD; --head-fg:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cta:#3D74E8; --frame:#1E3B6E; --frame-in:#0E1D3B; --chip:#12244A; --head-bg:#0A2E86; --bg:#08142B}}
+:root[data-theme="dark"]{--cta:#3D74E8; --frame:#1E3B6E; --frame-in:#0E1D3B; --chip:#12244A; --head-bg:#0A2E86; --bg:#08142B}
+body::before{background:var(--head-bg)}
+.eyebrow,th,aside.facts dt,.timeline .when{font-family:var(--f-body);font-weight:700;letter-spacing:.06em}
+.chip,.mast .eyebrow,.tag{display:inline-flex;align-items:center;gap:8px;justify-self:start;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-family:var(--f-body);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+.chip::before,.mast .eyebrow::before,.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);flex:none}
+.mast .eyebrow a{color:var(--fg)}
+.site-header{background:var(--head-bg);border-bottom:0;backdrop-filter:none}
+.site-header nav{justify-content:center}
+.site-header nav a,.signin{color:#FFFFFF;font-weight:500}
+.site-header nav a:hover,.signin:hover{color:#FFFFFF;opacity:.85}
+.site-header a.logo{color:#FFFFFF}
+.site-header a.logo .sym-pos{display:none!important}.site-header a.logo .sym-rev{display:block!important}
+.site-header .btn.primary{background:#FFFFFF;color:var(--royal)}
+.btn{border-radius:999px;padding:12px 22px}
+.btn.sm{padding:9px 20px}
+.btn.ghost{background:var(--surface);border:1px solid var(--line-2);color:var(--fg)}
+.mast{background:var(--bg);color:var(--fg)}
+.mast .wrap{padding-block:56px 40px}
+.mast h1{color:var(--fg);font-weight:700;letter-spacing:-.025em;max-width:24ch}
+.mast h1 em{color:var(--orange)}
+.mast .lede{color:var(--fg-2)}
+.metrics{border:10px solid var(--frame);border-radius:22px;background:var(--frame-in);margin-top:16px;overflow:hidden}
+.metric{padding:20px 22px}
+.metric + .metric{padding-left:22px;border-left:1px solid var(--line)}
+.metric b{color:var(--orange)}
+.metric span{color:var(--fg-2)}
+@media (max-width:640px){.metric + .metric{padding-left:22px;border-left:0;border-top:1px solid var(--line)}}
+aside.facts{border:8px solid var(--frame);border-radius:20px;background:var(--frame-in)}
+.band{background:var(--bg);color:var(--fg)}
+.band .wrap{padding-block:24px 48px}
+.band .wrap > *{position:relative}
+.band .panel{border:12px solid var(--frame);border-radius:26px;background:var(--frame-in);padding:36px clamp(20px,4vw,48px);display:grid;gap:16px}
+.band h2{color:var(--fg)}
+.band p{color:var(--fg-2)}
+.band .eyebrow{color:var(--fg)!important}
+.btn.ghost.on-band{border-color:var(--line-2);color:var(--fg)}
+.quotes{background:var(--bg)}
+.quotes .wrap{border-top:1px solid var(--line)}
+a.card{border-radius:16px}
+a.card:hover{border-color:var(--frame)}
+.featured{border-bottom:1px solid var(--line)}
+.trio div{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.tablebox{border-radius:14px}
+.preview-note{position:relative;z-index:6}
+.site-header a.logo .sym{width:42px}.site-header a.logo .word{font-size:1.6rem}
+
+@media (prefers-reduced-motion:reduce){a.card{transition:none}a.card:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="wrap"><a class="logo " href="https://think4ever.com/" aria-label="think4ever home"><span class="sym-pos"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#1D63E0"/><circle cx="89" cy="16" r="16" fill="#1D63E0"/><circle cx="89" cy="16" r="10.5" fill="#FFFFFF"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#B7CCF4"/><circle cx="47" cy="62" r="16" fill="#B7CCF4"/><circle cx="47" cy="62" r="10.5" fill="#FFFFFF"/><circle cx="47" cy="62" r="6.5" fill="#0B1B3A"/></svg></span><span class="sym-rev"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#FFFFFF"/><circle cx="89" cy="16" r="16" fill="#FFFFFF"/><circle cx="89" cy="16" r="10.5" fill="#0B1B3A"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#3A5690"/><circle cx="47" cy="62" r="16" fill="#3A5690"/><circle cx="47" cy="62" r="10.5" fill="#0B1B3A"/><circle cx="47" cy="62" r="6.5" fill="#FFFFFF"/></svg></span><span class="word">think<b>4</b>ever</span></a><nav aria-label="Main"><a href="https://think4ever.com/#how-it-works">Product</a><a href="/customers/">Customers</a><a href="https://think4ever.com/resources/">Resources</a><a href="https://think4ever.com/docs/">Docs</a><a href="https://think4ever.com/pricing/">Pricing</a></nav><div class="actions"><a class="signin" href="https://portal.think4ever.com/#/login">Sign in</a><a class="btn primary sm" href="https://portal.think4ever.com/#/register">Start free</a></div></div></header>
+<header class="mast"><div class="wrap">
+<p class="eyebrow"><a href="/customers/">Customers</a> / Consulting</p>
+<h1>How EY builds coherent applications faster, for itself and for its clients</h1>
+<p class="lede">EY Caribbean&#x27;s Technology Consulting practice uses Think4Ever to build its own internal applications and to deliver client software projects, with business intent, policies and acceptance criteria carried from the first conversation to released code.</p>
+<div class="metrics"><div class="metric"><b><mark class="tbd">X%</mark></b><span>faster to first accepted release</span></div><div class="metric"><b><mark class="tbd">X</mark></b><span>applications delivered in <mark class="tbd">Y</mark> months</span></div><div class="metric"><b><mark class="tbd">X%</mark></b><span>less rework after review</span></div></div>
+</div></header>
+<div class="wrap story"><main><section><figure class="quote"><blockquote>Creating software is becoming easier. Governing it is becoming harder. Think4Ever makes the entire journey transparent, traceable, and auditable.</blockquote><figcaption><b>Vernon A. Huerta</b>, Partner, EY Caribbean Technology Consulting Lead</figcaption></figure></section><section class=""><h2>The challenge</h2><p>Consulting firms are being asked to deliver software faster than ever, and AI coding tools have made writing code dramatically quicker. But speed at the keyboard has not solved the harder problem: making sure what gets built still matches what the business actually needs.</p><p>EY faced this on two fronts. Internally, teams needed applications to support <mark class="tbd">internal need, e.g. engagement management, knowledge workflows, reporting</mark>. On client engagements, EY delivery teams regularly inherit existing systems whose architecture, dependencies and business rules are only partly documented, and where critical knowledge sits with a handful of people.</p><ul class="points"><li><b>Context lost in handoffs.</b> Business objectives, policies and acceptance criteria were captured in slides and workshops, then drifted as work moved from advisory to delivery teams.</li><li><b>Slow discovery.</b> Understanding an existing system before changing it took <mark class="tbd">X weeks</mark> per engagement and had to be repeated whenever teams changed.</li><li><b>Rework and misalignment.</b> Faster AI-assisted coding increased the risk of shipping changes that were technically correct but misaligned with approved intent.</li><li><b>Limited capability transfer.</b> Clients increasingly want to keep the capability after the engagement ends, not just receive a delivered system.</li></ul></section><section class="wide"><h2>Why EY chose Think4Ever</h2><p>EY selected Think4Ever because it treats governed business context, not just code, as the foundation of delivery. The platform gives teams three things that matter in consulting work.</p><div class="trio"><div><h3>Clarity</h3><p>Existing code, workflows, objectives, policies and constraints are visible in one reviewable Living Blueprint that clients and EY teams review together.</p></div><div><h3>Coherence</h3><p>Applications and changes are built from approved intent, so implementation stays aligned as teams and AI tools move faster.</p></div><div><h3>Control</h3><p>People stay in charge of decisions, approvals and governance, and choose which tools or agents execute the work, inside Think4Ever or in the coding agents teams already use.</p></div></div></section><section class="wide"><h2>The approach: one governed loop</h2><p>EY teams apply the same four-step method to internal builds and to client projects.</p><div class="tablebox"><table><thead><tr><th>Step</th><th>Stage</th><th>What EY teams do</th></tr></thead><tbody><tr><td>1. Understand</td><td>Code → Design</td><td>Make the existing architecture, workflows, dependencies and known rules reviewable, working with the people who know them.</td></tr><tr><td>2. Encode</td><td>Business context</td><td>Capture objectives, policies, guardrails, decisions and acceptance criteria as approved intent.</td></tr><tr><td>3. Build</td><td>Design → Code</td><td>Create applications and changes in Think4Ever or supported coding agents, using the same reviewed context.</td></tr><tr><td>4. Govern</td><td>Release and learn</td><td>Test, approve and release; review coherence against intent and keep the Living Blueprint current.</td></tr></tbody></table></div><p>The speed does not come from skipping understanding. It comes from encoding the important business and system context once, reviewing it, and reusing it across every application and change.</p></section><section class=""><h2>Internal applications at EY</h2><p>EY first applied Think4Ever to its own needs, building <mark class="tbd">name and describe the internal application(s), scope, team size and timeline</mark>. Starting internally let EY prove the method on its own systems before bringing it to clients, and gave practitioners hands-on experience with the platform.</p><p><mark class="tbd">Result, e.g. The first internal application moved from approved objectives to production in X weeks, compared with a typical Y weeks.</mark></p></section><section class="wide"><h2>Client software delivery</h2><p>EY now uses Think4Ever on client engagements <mark class="tbd">client industries or project types; clients may stay anonymous</mark>. Engagements follow a structured rhythm designed to deliver working software early and leave the client with a lasting capability.</p><div class="timeline"><div><span class="when">Days 1–30</span><h3>Encode context</h3><p>Validated Blueprint, objectives, policies and guardrails; a prioritized outcome backlog; a working thin slice.</p></div><div><span class="when">Days 31–90</span><h3>Prove delivery</h3><p>First accepted application, module or major change released, proving the closed-loop method end to end.</p></div><div><span class="when">Quarters 2–3</span><h3>Scale outcomes</h3><p>Applications, workflows and modernization increments delivered at an agreed cadence from one governed backlog.</p></div><div><span class="when">Quarter 4</span><h3>Transfer and expand</h3><p>Client team trained, governance embedded, value validated, next domains identified.</p></div></div><p>An increment counts as done only when it has an approved objective and acceptance criteria, tested code with deployment or handoff, an updated Blueprint, and a reported outcome measure. After the initial ramp, EY teams target <mark class="tbd">a production-ready increment every 4–6 weeks; confirm cadence</mark>.</p></section><section class="wide"><h2>Results</h2><div class="tablebox"><table><thead><tr><th>Value area</th><th>Measure</th><th>Result</th></tr></thead><tbody><tr><td>Speed</td><td>Time to first accepted release</td><td class="result"><mark class="tbd">X weeks, vs. Y weeks previously</mark></td></tr><tr><td>Capacity</td><td>Discovery and documentation effort</td><td class="result"><mark class="tbd">X% reduction</mark></td></tr><tr><td>Rework</td><td>Changes reworked after review</td><td class="result"><mark class="tbd">X% fewer</mark></td></tr><tr><td>Throughput</td><td>Increments or applications delivered</td><td class="result"><mark class="tbd">X in Y months</mark></td></tr><tr><td>Client outcomes</td><td>Business value delivered for clients</td><td class="result"><mark class="tbd">e.g. time to market improved</mark></td></tr><tr><td>Capability transfer</td><td>Client team members trained</td><td class="result"><mark class="tbd">X practitioners</mark></td></tr></tbody></table></div></section><section class=""><h2>Why this matters for consulting firms</h2><ul class="points"><li><b>Sell outcomes, not hours.</b> Clients buy clarity, coherence and control, not just code. A reviewable Living Blueprint makes that value visible to sponsors from the first month.</li><li><b>A repeatable delivery method.</b> The same method works across internal builds, new applications and modernization, so every engagement strengthens the practice.</li><li><b>Capability transfer as a differentiator.</b> Clients finish with working software, governed context, a trained team and an expansion roadmap.</li><li><b>Works with existing tools.</b> Teams keep the AI coding tools they already rely on, with approved context guiding the work and people keeping approval.</li></ul><figure class="quote"><blockquote>EY has shown what happens when a consulting team puts governed business context at the center of delivery. They&#x27;re building faster and staying aligned with what their clients actually approved.</blockquote><figcaption><b>Sunil Kishen</b>, Chief Product Officer, Think4Ever</figcaption></figure></section><section class=""><h2>What&#x27;s next</h2><p><mark class="tbd">EY&#x27;s plans, e.g. expanding to more practices, standing up a center of excellence, or offering Think4Ever-based delivery to more clients.</mark></p></section><div class="about"><div><h3>About EY</h3><p><mark class="tbd">EY-approved boilerplate, supplied by EY.</mark></p></div><div><h3>About Think4Ever</h3><p>Think4Ever is an AI-native SDLC platform that keeps architecture, code and every dependency connected. Its multi-agent design and development platform captures requirements and business rules as approved intent in a Living Blueprint, generates architecture and documentation, and builds working applications from that shared context, in Think4Ever or in the coding agents your team already uses.</p></div></div></main>
+<aside class="facts" aria-label="At a glance"><p class="eyebrow">At a glance</p><dl><div><dt>Customer</dt><dd>EY Caribbean, Technology Consulting <mark class="tbd">confirm entity name</mark></dd></div><div><dt>Industry</dt><dd>Professional services and consulting</dd></div><div><dt>Region</dt><dd>Caribbean</dd></div><div><dt>Use cases</dt><dd>Internal application development; client software delivery and modernization</dd></div><div><dt>Think4Ever used</dt><dd>Living Blueprint, Code → Design, Design → Code</dd></div></dl>
+<a class="btn primary" href="https://portal.think4ever.com/#/register">Start free</a></aside></div>
+<section class="band"><div class="wrap"><div class="panel">
+<p class="eyebrow" style="color:var(--band-dim)">For consulting firms and systems integrators</p>
+<h2>Deliver governed software for your clients</h2>
+<p>EY is the first consulting firm to build its delivery practice on Think4Ever. If your firm delivers software for clients, we will help you run a first engagement with the same method.</p>
+<div class="btns"><a class="btn primary" href="https://think4ever.com/contact-us/">Talk to us about a partner pilot</a><a class="btn ghost on-band" href="https://portal.think4ever.com/#/register">Start free</a></div>
+</div></div></section>
+<div class="wrap related"><h2>More customer stories</h2><div class="cards"><a class="card" href="/customers/yogifi/"><span class="tag">Startups</span><span class="who">YogiFi</span><p>A founder with limited resources takes a new idea from requirements to a deployed product.</p><span class="go">Read the story →</span></a><a class="card" href="/customers/insignian-homes/"><span class="tag">Enterprise</span><span class="who">Insignian Homes</span><p>A global exporter replaces per-seat SaaS with applications it designs and owns, starting with CRM.</p><span class="go">Read the story →</span></a></div></div>
+<footer class="site-footer"><div class="wrap"><div class="brand"><a class="logo on-band" href="https://think4ever.com/" aria-label="think4ever home"><span class="sym-pos"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#1D63E0"/><circle cx="89" cy="16" r="16" fill="#1D63E0"/><circle cx="89" cy="16" r="10.5" fill="#FFFFFF"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#B7CCF4"/><circle cx="47" cy="62" r="16" fill="#B7CCF4"/><circle cx="47" cy="62" r="10.5" fill="#FFFFFF"/><circle cx="47" cy="62" r="6.5" fill="#0B1B3A"/></svg></span><span class="sym-rev"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#FFFFFF"/><circle cx="89" cy="16" r="16" fill="#FFFFFF"/><circle cx="89" cy="16" r="10.5" fill="#0B1B3A"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#3A5690"/><circle cx="47" cy="62" r="16" fill="#3A5690"/><circle cx="47" cy="62" r="10.5" fill="#0B1B3A"/><circle cx="47" cy="62" r="6.5" fill="#FFFFFF"/></svg></span><span class="word">think<b>4</b>ever</span></a><p>Turn your code into a living system map.</p></div><div><p class="eyebrow">Product</p><a href="https://think4ever.com/#how-it-works">How it works</a><a href="https://think4ever.com/code-to-design/">Code → Design</a><a href="https://think4ever.com/design-to-code/">Design → Code</a><a href="https://think4ever.com/pricing/">Pricing</a></div><div><p class="eyebrow">Resources</p><a href="/customers/">Customer stories</a><a href="https://think4ever.com/resources/">Resource Library</a><a href="https://think4ever.com/blog/">Blog</a><a href="https://think4ever.com/faq/">FAQ</a></div><div><p class="eyebrow">Company</p><a href="https://think4ever.com/contact-us/">Contact us</a><a href="https://portal.think4ever.com/#/login">Sign in</a></div></div><div class="wrap legal">© 2026 Think4Ever Global Inc.</div></footer>
+</body>
+</html>
