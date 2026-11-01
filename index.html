@@ -23,9 +23,9 @@
   --blue: #093CAD;
   --orange: #FF7A1A;
   --sky: #B7CCF4;
-  --bg: #FBFCFE;
+  --bg: #F4F6FA;
   --surface: #FFFFFF;
-  --surface-2: #F4F6FA;
+  --surface-2: #F8FAFD;
   --fg: #0B1B3A;
   --fg-2: #3A4A6A;
   --fg-3: #64728F;
@@ -45,7 +45,7 @@
   --head-fg: #FFFFFF;
   --tbd-bg: #FFF2A8;
   --tbd-fg: #3D3300;
-  --shadow: 0 1px 3px rgba(11,27,58,0.04), 0 8px 24px rgba(11,27,58,0.05);
+  --shadow: 0 1px 3px rgba(11,27,58,0.04), 0 6px 20px rgba(11,27,58,0.05);
   --f-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --f-mono: "JetBrains Mono", monospace;
   --s-1: .8125rem;
@@ -54,7 +54,7 @@
   --s2: 1.375rem;
   --s3: 1.75rem;
   --s4: 2.25rem;
-  --s5: clamp(2rem, 4.6vw, 3.25rem);
+  --s5: clamp(2rem, 4.4vw, 3.1rem);
 }
 
 * { box-sizing: border-box; }
@@ -91,7 +91,7 @@ p { margin: 0; }
 a { color: var(--accent); }
 a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
 
-/* Eyebrows, Chips and Tags with orange dot */
+/* Eyebrows, Chips and Tags with orange dot - STRICTLY HUG CONTENT */
 .eyebrow, th, aside.facts dt, .timeline .when {
   font-family: var(--f-body);
   font-weight: 700;
@@ -101,6 +101,9 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  justify-self: start;
+  width: fit-content;
+  max-width: max-content;
   background: var(--chip);
   border: 1px solid var(--line);
   border-radius: 9999px;
@@ -142,13 +145,14 @@ mark.tbd, mark {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: .95rem;
   text-decoration: none;
   transition: all .2s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 .btn.primary {
   background: var(--cta);
@@ -170,7 +174,7 @@ mark.tbd, mark {
 }
 .btn.ghost.on-band {
   background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   color: #FFFFFF;
 }
 .btn.ghost.on-band:hover {
@@ -224,7 +228,9 @@ body::before {
   align-items: center;
   gap: 16px;
 }
-.site-header a.logo {
+
+/* Logos (Both Header & Footer) */
+a.logo {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -232,11 +238,34 @@ body::before {
   color: #FFFFFF;
   flex: none;
 }
-.site-header a.logo .sym { width: 38px; height: auto; display: block; }
-.site-header a.logo .word { font-size: 1.55rem; font-weight: 400; letter-spacing: -.035em; line-height: 1; }
-.site-header a.logo .word b { font-weight: 900; color: var(--orange); }
-.site-header a.logo .sym-pos { display: none !important; }
-.site-header a.logo .sym-rev { display: block !important; }
+a.logo .sym {
+  width: 38px;
+  height: auto;
+  display: block;
+}
+a.logo .word {
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1;
+  color: #FFFFFF;
+}
+a.logo .word b {
+  font-weight: 900;
+  color: var(--orange);
+}
+/* Ensure logo SVGs in footer & header display white version */
+.site-header a.logo .sym-pos,
+.site-footer a.logo .sym-pos,
+a.logo.on-band .sym-pos {
+  display: none !important;
+}
+.site-header a.logo .sym-rev,
+.site-footer a.logo .sym-rev,
+a.logo.on-band .sym-rev {
+  display: block !important;
+}
+
 .site-header .btn.primary {
   background: #FFFFFF;
   color: var(--royal);
@@ -255,15 +284,19 @@ body::before {
   .signin { display: none; }
 }
 
-/* Masthead Hero */
+/* Masthead Hero (Styled as a White Container Card) */
 .mast {
-  background: var(--bg);
-  color: var(--fg);
-  padding-block: 52px 36px;
+  background: transparent;
+  padding-block: 40px 24px;
 }
 .mast .wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 48px clamp(20px, 4vw, 56px);
+  box-shadow: var(--shadow);
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 .mast h1 {
   color: var(--fg);
@@ -288,12 +321,12 @@ body::before {
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: 36px;
   align-items: center;
-  padding: 40px clamp(20px, 4vw, 44px);
+  padding: 44px clamp(20px, 4vw, 48px);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 20px;
   box-shadow: var(--shadow);
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 .featured .lead { display: grid; gap: 14px; }
 .featured h2 { font-size: 1.85rem; line-height: 1.25; color: var(--fg); }
@@ -304,14 +337,14 @@ body::before {
 
 /* Fit Section (Cards Grid) */
 .fit {
-  padding-block: 32px 48px;
+  padding-block: 16px 40px;
   display: grid;
   gap: 24px;
 }
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 a.card {
   display: flex;
@@ -361,14 +394,12 @@ a.card .go {
 
 /* Quotes Section */
 .quotes {
-  background: var(--surface-2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding-block: 16px 40px;
 }
 .quotes .wrap {
-  padding-block: 48px;
   display: grid;
-  gap: 28px;
+  gap: 24px;
 }
 .quotes .grid {
   display: grid;
@@ -386,7 +417,7 @@ figure.quote {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 26px;
+  padding: 28px;
   box-shadow: var(--shadow);
 }
 figure.quote blockquote {
@@ -414,36 +445,41 @@ figure.quote figcaption {
   padding-left: 36px;
   color: var(--fg-3);
   font-size: var(--s-1);
+  line-height: 1.4;
 }
 figure.quote figcaption b {
   color: var(--fg);
   font-weight: 700;
   display: block;
   font-size: .95rem;
+  margin-bottom: 2px;
 }
 
 /* Call to Action Band */
 .band {
-  background: var(--bg);
-  color: var(--fg);
-}
-.band .wrap {
-  padding-block: 32px 48px;
+  background: transparent;
+  padding-block: 16px 36px;
 }
 .band .panel {
   background: var(--royal);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 22px;
-  padding: 44px clamp(20px, 4vw, 48px);
+  padding: 44px clamp(20px, 4vw, 52px);
   box-shadow: 0 10px 30px rgba(9, 60, 173, 0.15);
   display: grid;
   gap: 18px;
 }
 .band h2 { color: #FFFFFF !important; font-size: 1.85rem; }
 .band p { color: rgba(255, 255, 255, 0.88) !important; max-width: 62ch; font-size: 1.05rem; line-height: 1.6; }
-.band .eyebrow { color: rgba(255, 255, 255, 0.85) !important; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
-.band .eyebrow::before { background: #FF9A4D; }
+.band .eyebrow {
+  justify-self: start;
+  width: fit-content;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.14) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+}
+.band .eyebrow::before { background: #FF9A4D !important; }
 .band .btn.primary {
   background: #FFFFFF;
   color: var(--royal);
@@ -457,14 +493,13 @@ figure.quote figcaption b {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  margin-top: 24px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  margin-top: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow);
 }
 .metric {
-  padding: 22px 24px;
+  padding: 20px 22px;
   display: grid;
   gap: 4px;
   min-width: 0;
@@ -493,10 +528,10 @@ figure.quote figcaption b {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 48px;
-  padding-block: 48px 24px;
+  padding-block: 40px 24px;
   align-items: start;
 }
-.story main { display: grid; gap: 44px; min-width: 0; }
+.story main { display: grid; gap: 40px; min-width: 0; }
 .story section { display: grid; gap: 16px; max-width: 68ch; }
 .story section.wide { max-width: none; }
 .story section p { color: var(--fg-2); font-size: 1rem; line-height: 1.65; }
@@ -574,7 +609,17 @@ td:first-child, td.result { color: var(--fg); }
 .about p { color: var(--fg-2); font-size: .95rem; line-height: 1.6; }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
 
-.related { padding-block: 48px; display: grid; gap: 20px; }
+/* Last Card: Write the next story with us (Unified White Card) */
+.related {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 44px clamp(20px, 4vw, 52px);
+  box-shadow: var(--shadow);
+  margin-block: 16px 48px;
+  display: grid;
+  gap: 16px;
+}
 .related h2 { font-size: 1.85rem; color: var(--fg); font-weight: 800; }
 .related p { color: var(--fg-2); max-width: 62ch; font-size: 1.05rem; }
 
@@ -610,7 +655,7 @@ td:first-child, td.result { color: var(--fg); }
 </head>
 <body>
 
-<header class="site-header"><div class="wrap"><a class="logo " href="https://think4ever.com/" aria-label="think4ever home"><span class="sym-pos"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#1D63E0"/><circle cx="89" cy="16" r="16" fill="#1D63E0"/><circle cx="89" cy="16" r="10.5" fill="#FFFFFF"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#B7CCF4"/><circle cx="47" cy="62" r="16" fill="#B7CCF4"/><circle cx="47" cy="62" r="10.5" fill="#FFFFFF"/><circle cx="47" cy="62" r="6.5" fill="#0B1B3A"/></svg></span><span class="sym-rev"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#FFFFFF"/><circle cx="89" cy="16" r="16" fill="#FFFFFF"/><circle cx="89" cy="16" r="10.5" fill="#0B1B3A"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#3A5690"/><circle cx="47" cy="62" r="16" fill="#3A5690"/><circle cx="47" cy="62" r="10.5" fill="#0B1B3A"/><circle cx="47" cy="62" r="6.5" fill="#FFFFFF"/></svg></span><span class="word">think<b>4</b>ever</span></a><nav aria-label="Main"><a href="https://think4ever.com/#how-it-works">Product</a><a href="/customers/">Customers</a><a href="https://think4ever.com/resources/">Resources</a><a href="https://think4ever.com/docs/">Docs</a><a href="https://think4ever.com/pricing/">Pricing</a></nav><div class="actions"><a class="signin" href="https://portal.think4ever.com/#/login">Sign in</a><a class="btn primary sm" href="https://portal.think4ever.com/#/register">Start free</a></div></div></header>
+<header class="site-header"><div class="wrap"><a class="logo " href="https://think4ever.com/" aria-label="think4ever home"><span class="sym-pos"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#1D63E0"/><circle cx="89" cy="16" r="16" fill="#1D63E0"/><circle cx="89" cy="16" r="10.5" fill="#FFFFFF"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#B7CCF4"/><circle cx="47" cy="62" r="16" fill="#B7CCF4"/><circle cx="47" cy="62" r="10.5" fill="#FFFFFF"/><circle cx="47" cy="62" r="6.5" fill="#0B1B3A"/></svg></span><span class="sym-rev"><svg class="sym" viewBox="0 0 136 78" aria-hidden="true"><rect x="0" y="0" width="90" height="32" rx="3" fill="#FFFFFF"/><circle cx="89" cy="16" r="16" fill="#FFFFFF"/><circle cx="89" cy="16" r="10.5" fill="#0B1B3A"/><circle cx="89" cy="16" r="6.5" fill="#FF7A1A"/><rect x="46" y="46" width="90" height="32" rx="3" fill="#3A5690"/><circle cx="47" cy="62" r="16" fill="#3A5690"/><circle cx="47" cy="62" r="10.5" fill="#0B1B3A"/><circle cx="47" cy="62" r="6.5" fill="#FFFFFF"/></svg></span><span class="word">think<b>4</b>ever</span></a><nav aria-label="Main"><a href="https://think4ever.com/#how-it-works">Product</a><a href="https://think4ever.com/resources/">Resources</a><a href="https://think4ever.com/docs/">Docs</a><a href="https://think4ever.com/pricing/">Pricing</a><a href="/customers/">Customers</a></nav><div class="actions"><a class="signin" href="https://portal.think4ever.com/#/login">Sign in</a><a class="btn primary sm" href="https://portal.think4ever.com/#/register">Start free</a></div></div></header>
 <header class="mast"><div class="wrap">
 <p class="eyebrow">Customers</p>
 <h1>Teams that <em>design</em> before they build</h1>
@@ -621,10 +666,10 @@ td:first-child, td.result { color: var(--fg); }
 <h2>How EY builds coherent applications faster, for itself and for its clients</h2>
 <p>EY Caribbean&#x27;s Technology Consulting practice uses Think4Ever to build its own internal applications and to deliver client software projects, with business intent, policies and acceptance criteria carried from the first conversation to released code.</p>
 <div class="btns"><a class="btn primary" href="/customers/ey/">Read the EY story</a></div></div>
-<div><figure class="quote"><blockquote>Creating software is becoming easier. Governing it is becoming harder. Think4Ever makes the entire journey transparent, traceable, and auditable.</blockquote><figcaption><b>Vernon A. Huerta</b>, Partner, EY Caribbean Technology Consulting Lead</figcaption></figure></div>
+<div><figure class="quote"><blockquote>Creating software is becoming easier. Governing it is becoming harder. Think4Ever makes the entire journey transparent, traceable, and auditable.</blockquote><figcaption><b>Vernon A. Huerta</b><span>Partner, EY Caribbean Technology Consulting Lead</span></figcaption></figure></div>
 </div>
 <section class="wrap fit"><h2>Find a story like yours</h2><div class="cards"><a class="card" href="/customers/ey/"><span class="tag">Consulting</span><span class="situation">You deliver software for clients and need it to match what they approved.</span><span class="who">EY Caribbean</span><p>EY&#x27;s consulting team builds internal apps and client software from one governed Living Blueprint.</p><span class="go">Read the story →</span></a><a class="card" href="/customers/yogifi/"><span class="tag">Startups</span><span class="situation">You&#x27;re a founder with a new idea and a small team.</span><span class="who">YogiFi</span><p>A founder with limited resources takes a new idea from requirements to a deployed product.</p><span class="go">Read the story →</span></a><a class="card" href="/customers/insignian-homes/"><span class="tag">Enterprise</span><span class="situation">You&#x27;re paying for SaaS tools that don&#x27;t fit how your business works.</span><span class="who">Insignian Homes</span><p>A global exporter replaces per-seat SaaS with applications it designs and owns, starting with CRM.</p><span class="go">Read the story →</span></a></div></section>
-<section class="quotes"><div class="wrap"><p class="eyebrow">In their words</p><div class="grid"><figure class="quote"><blockquote>Creating software is becoming easier. Governing it is becoming harder. Think4Ever makes the entire journey transparent, traceable, and auditable.</blockquote><figcaption><b>Vernon A. Huerta</b>, Partner, EY Caribbean Technology Consulting Lead</figcaption></figure><figure class="quote"><blockquote>Think4Ever has been invaluable in helping us comprehensively design our YogiFi Smart Yoga teacher portal before we coded it and tested it.</blockquote><figcaption><b>Muralidhar Somisetty</b>, Founder and CEO, YogiFi</figcaption></figure><figure class="quote"><blockquote><mark class="tbd">SAMPLE, needs CEO approval: We were paying every year for software that was never really built for how we work with our buyers around the world. With Think4Ever we design the application around our own process first, then build it, and we end up owning it.</mark></blockquote><figcaption><b>Mahendra Poddar</b>, CEO, Insignian Homes</figcaption></figure></div></div></section>
+<section class="quotes"><div class="wrap"><p class="eyebrow">In their words</p><div class="grid"><figure class="quote"><blockquote>Creating software is becoming easier. Governing it is becoming harder. Think4Ever makes the entire journey transparent, traceable, and auditable.</blockquote><figcaption><b>Vernon A. Huerta</b><span>Partner, EY Caribbean Technology Consulting Lead</span></figcaption></figure><figure class="quote"><blockquote>Think4Ever has been invaluable in helping us comprehensively design our YogiFi Smart Yoga teacher portal before we coded it and tested it.</blockquote><figcaption><b>Muralidhar Somisetty</b><span>Founder and CEO, YogiFi</span></figcaption></figure><figure class="quote"><blockquote><mark class="tbd">SAMPLE, needs CEO approval: We were paying every year for software that was never really built for how we work with our buyers around the world. With Think4Ever we design the application around our own process first, then build it, and we end up owning it.</mark></blockquote><figcaption><b>Mahendra Poddar</b><span>CEO, Insignian Homes</span></figcaption></figure></div></div></section>
 <section class="band"><div class="wrap"><div class="panel">
 <p class="eyebrow" style="color:var(--band-dim)">For consulting firms and systems integrators</p>
 <h2>EY was first. Your firm can be next.</h2>
