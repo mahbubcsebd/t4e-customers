@@ -100,25 +100,26 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-
 .eyebrow, .chip, .tag, .mast .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   justify-self: start;
   width: fit-content;
   max-width: max-content;
   background: var(--chip);
   border: 1px solid var(--line);
   border-radius: 9999px;
-  padding: 5px 14px;
+  padding: 3px 10px;
   font-family: var(--f-body);
-  font-size: .72rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--fg);
+  line-height: 1.4;
 }
 .eyebrow::before, .chip::before, .tag::before, .mast .eyebrow::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--orange);
   flex: none;
@@ -472,14 +473,25 @@ figure.quote figcaption b {
 }
 .band h2 { color: #FFFFFF !important; font-size: 1.85rem; }
 .band p { color: rgba(255, 255, 255, 0.88) !important; max-width: 62ch; font-size: 1.05rem; line-height: 1.6; }
-.band .eyebrow {
+.band .eyebrow, .band .panel .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   justify-self: start;
   width: fit-content;
-  color: #FFFFFF !important;
-  background: rgba(255,255,255,0.14) !important;
-  border-color: rgba(255,255,255,0.28) !important;
+  max-width: max-content;
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 9999px;
+  padding: 3px 10px !important;
+  font-size: 11px !important;
+  font-weight: 700;
+  letter-spacing: .05em !important;
+  text-transform: uppercase;
+  line-height: 1.4 !important;
 }
-.band .eyebrow::before { background: #FF9A4D !important; }
+.band .eyebrow::before, .band .panel .eyebrow::before { background: #FF9A4D !important; width: 5px !important; height: 5px !important; }
 .band .btn.primary {
   background: #FFFFFF;
   color: var(--royal);
