@@ -3,16 +3,24 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "rewrites": [
-    { "source": "/customers", "destination": "/customers/index.html" },
-    { "source": "/customers/", "destination": "/customers/index.html" },
-    { "source": "/customers/ey", "destination": "/customers/ey/index.html" },
-    { "source": "/customers/ey/", "destination": "/customers/ey/index.html" },
-    { "source": "/customers/yogifi", "destination": "/customers/yogifi/index.html" },
-    { "source": "/customers/yogifi/", "destination": "/customers/yogifi/index.html" },
-    { "source": "/customers/insignian-homes", "destination": "/customers/insignian-homes/index.html" },
-    { "source": "/customers/insignian-homes/", "destination": "/customers/insignian-homes/index.html" },
+    { "source": "/customers", "destination": "/index.html" },
+    { "source": "/customers/", "destination": "/index.html" },
+    { "source": "/customers/ey", "destination": "/ey/index.html" },
+    { "source": "/customers/ey/", "destination": "/ey/index.html" },
+    { "source": "/customers/yogifi", "destination": "/yogifi/index.html" },
+    { "source": "/customers/yogifi/", "destination": "/yogifi/index.html" },
+    { "source": "/customers/insignian-homes", "destination": "/insignian-homes/index.html" },
+    { "source": "/customers/insignian-homes/", "destination": "/insignian-homes/index.html" },
+    { "source": "/customers/security-incident-response", "destination": "/security-incident-response/index.html" },
+    { "source": "/customers/security-incident-response/", "destination": "/security-incident-response/index.html" },
+    { "source": "/customers/img/:path*", "destination": "/img/:path*" },
     { "source": "/ey", "destination": "/ey/index.html" },
+    { "source": "/ey/", "destination": "/ey/index.html" },
     { "source": "/yogifi", "destination": "/yogifi/index.html" },
-    { "source": "/insignian-homes", "destination": "/insignian-homes/index.html" }
+    { "source": "/yogifi/", "destination": "/yogifi/index.html" },
+    { "source": "/insignian-homes", "destination": "/insignian-homes/index.html" },
+    { "source": "/insignian-homes/", "destination": "/insignian-homes/index.html" },
+    { "source": "/security-incident-response", "destination": "/security-incident-response/index.html" },
+    { "source": "/security-incident-response/", "destination": "/security-incident-response/index.html" }
   ]
 }
